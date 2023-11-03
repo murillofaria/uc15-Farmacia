@@ -24,4 +24,9 @@ public class DrogariaController {
     public String exibirCarrinhoCompra(){
         return "telaCarrinhoCompra";
     }
+    
+    @GetMapping("/tela_forma_pagamento")
+    public String exibirFormaPagamento(){
+        return "telaFormaPagamento";
+    }
 }
