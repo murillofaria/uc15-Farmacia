@@ -19,4 +19,9 @@ public class DrogariaController {
     public String exibirCadastroRemedio(){
         return "telaCadastroRemedio";
     }
+    
+    @GetMapping("/tela_carrinho_compra")
+    public String exibirCarrinhoCompra(){
+        return "telaCarrinhoCompra";
+    }
 }
