@@ -14,4 +14,9 @@ public class DrogariaController {
     public String exibirCadastroUsuario(){
         return "telaCadastroUsuario";
     }
+    
+    @GetMapping("/tela_cadastro_remedio")
+    public String exibirCadastroRemedio(){
+        return "telaCadastroRemedio";
+    }
 }
