@@ -9,4 +9,9 @@ public class DrogariaController {
     public String exibirTelaInicial(){
         return "telaInicial";
     }
+    
+    @GetMapping("/tela_cadastro_usuario")
+    public String exibirCadastroUsuario(){
+        return "telaCadastroUsuario";
+    }
 }
