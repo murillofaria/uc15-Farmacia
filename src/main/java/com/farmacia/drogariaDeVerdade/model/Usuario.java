@@ -5,13 +5,13 @@ import java.util.Date;
 public class Usuario {
     private String nome;
     private String senha;
-    private Date data;
+    private String data;
     private String cpf;
     
     public Usuario(){
     }
 
-    public Usuario(String nome, String senha, Date data, String cpf) {
+    public Usuario(String nome, String senha, String data, String cpf) {
         this.nome = nome;
         this.senha = senha;
         this.data = data;
@@ -34,11 +34,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 

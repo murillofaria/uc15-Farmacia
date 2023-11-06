@@ -1,7 +1,10 @@
 package com.farmacia.drogariaDeVerdade.controller;
 
+import com.farmacia.drogariaDeVerdade.model.Usuario;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class DrogariaController {
@@ -11,8 +14,14 @@ public class DrogariaController {
     }
     
     @GetMapping("/tela_cadastro_usuario")
-    public String exibirCadastroUsuario(){
+    public String exibirCadastroUsuario(Model model){
+        model.addAttribute("usuario", new Usuario());
         return "telaCadastroUsuario";
+    }
+    
+    @PostMapping("/tela_cadastro_usuario")
+    public String cadastrarUsuario(){
+        return "redirect:/tela_cadastro_remedio";
     }
     
     @GetMapping("/tela_cadastro_remedio")
