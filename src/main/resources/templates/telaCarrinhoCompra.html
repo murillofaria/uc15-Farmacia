@@ -16,16 +16,21 @@
             <div class="row mt-5 d-flex justify-content-center">
                 <div class="col-7 d-flex align-items-center border border-dark justify-content-end">
                     <img class="me-3" th:src="@{/images/imagem_comprar_remedio.png}" width="45">
-                    <h4 class="me-3">Nome do remédio</h4>
-                    <span class="me-3">Quantidade de remédios</span>
-                    <span class="me-3">Preço dos remédios</span>
-                    <img th:src="@{/images/imagem_lixeira.png}" width="45">
+                    <span class="me-3 fs-4" th:if="${comprarRemedio}" th:text="${comprarRemedio.nome}"></span>
+                    <span class="me-3 fs-4" th:unless="${comprarRemedio}">Nome do remédio</span>
+                    
+                    <span class="me-3" th:if="${comprarRemedio}" th:text="'R$: '+${comprarRemedio.valor}"></span>
+                    <span class="me-3" th:unless="${comprarRemedio}">Preço do remédio</span>
+                    <a href="/tela_carrinho_compra">
+                        <img th:src="@{/images/imagem_lixeira.png}" width="45">
+                    </a>
                 </div>
             </div>
             
             <div class="row mt-5 d-flex justify-content-center">
                 <div class="col-7 d-flex justify-content-end border">
-                    <span>TOTAL: R$</span>
+                    <span th:if="${comprarRemedio}" th:text="'TOTAL: R$ '+${comprarRemedio.valor}"></span>
+                    <span th:unless="${comprarRemedio}">TOTAL:</span>
                 </div>
             </div>
             

@@ -35,7 +35,7 @@ const valor = document.querySelector("#valor");
     
     //se todos os campos estiverem corretos
     formCadastroUsuario.submit();
-});*/
+});
 
 formCadastroRemedio.addEventListener("submit", function(){
     event.preventDefault();
@@ -56,4 +56,4 @@ formCadastroRemedio.addEventListener("submit", function(){
     };
     
     formCadastroRemedio.submit();
-});
+});*/

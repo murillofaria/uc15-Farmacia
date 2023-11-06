@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -40,12 +41,26 @@ public class DrogariaController {
     
     @PostMapping("/tela_cadastro_remedio")
     public String cadastrarRemedio(@ModelAttribute Remedio remedio){
+        //auto increment caseiro kkkkk
+        remedio.setId(remedios.size() +1);
+        
         remedios.add(remedio);
         return "redirect:/tela_inicial";
     }
     
     @GetMapping("/tela_carrinho_compra")
-    public String exibirCarrinhoCompra(){
+    public String exibirCarrinhoCompraVazio(){
+        return "telaCarrinhoCompra";
+    }
+    
+    @GetMapping("/tela_carrinho_compra/{id}")
+    public String exibirCarrinhoCompraPopulado(@PathVariable("id") int id, Model model){
+        for(Remedio procurarRemedio : remedios){
+            if(procurarRemedio.getId() == id){
+                Remedio comprarRemedio = procurarRemedio;
+                model.addAttribute("comprarRemedio", comprarRemedio);
+            }
+        }
         return "telaCarrinhoCompra";
     }
     
