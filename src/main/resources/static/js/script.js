@@ -4,7 +4,12 @@ const senha = document.querySelector("#senha");
 const dataNascimento = document.querySelector("#dataNascimento");
 const cpf = document.querySelector("#cpf");
 
-formCadastroUsuario.addEventListener("submit", function(){
+const formCadastroRemedio = document.querySelector("#formCadastroRemedio");
+const nomeRemedio = document.querySelector("#nomeRemedio");
+const descricao = document.querySelector("#descricao");
+const valor = document.querySelector("#valor");
+
+/*formCadastroUsuario.addEventListener("submit", function(){
     //para não ocorrer submit
     event.preventDefault();
     
@@ -30,4 +35,25 @@ formCadastroUsuario.addEventListener("submit", function(){
     
     //se todos os campos estiverem corretos
     formCadastroUsuario.submit();
+});*/
+
+formCadastroRemedio.addEventListener("submit", function(){
+    event.preventDefault();
+    
+    if(nomeRemedio.value === ""){
+        alert("Insira o campo nome do remédio corretamente.");
+        return;
+    };
+    
+    if(descricao.value === ""){
+        alert("Insira o campo descrição corretamente.");
+        return;
+    };
+    
+    if(valor.value === ""){
+        alert("Insira o campo valor corretamente.");
+        return;
+    };
+    
+    formCadastroRemedio.submit();
 });

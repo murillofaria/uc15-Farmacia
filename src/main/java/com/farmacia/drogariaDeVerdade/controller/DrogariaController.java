@@ -29,6 +29,11 @@ public class DrogariaController {
         return "telaCadastroRemedio";
     }
     
+    @PostMapping("/tela_cadastro_remedio")
+    public String cadastrarRemedio(){
+        return "redirect:/tela_inicial";
+    }
+    
     @GetMapping("/tela_carrinho_compra")
     public String exibirCarrinhoCompra(){
         return "telaCarrinhoCompra";
