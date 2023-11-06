@@ -13,14 +13,51 @@
                 <header th:insert="navbar.html"></header>
             </div>
             
-            <div class="row">
-                <div class="col">
-                    
+            <div class="row justify-content-center mt-5">
+                <div class="col-8 justify-content-center d-flex border border-primary">
+                    <div class="form-check me-5 border border-dark px-4 py-2">
+                        <input class="form-check-input" type="radio" name="formaPagamento" id="pix">
+                        <label class="form-check-label" for="pix">PIX</label>
+                    </div>
+                    <div class="form-check border border-dark px-4 py-2 d-flex">
+                        <input class="form-check-input" type="radio" name="formaPagamento" id="cartaoCredito">
+                        <label class="form-check-label" for="cartaoCredito">Cartão de crédito</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center mt-4">
+                <div class="col-8 justify-content-center d-flex">
+                    <form id="formEfetuarPagamento" th:action="@{/tela_forma_pagamento}" method="POST">
+                        <div id="campoPix" style="display:none">
+                            <label for="telefonePix" class="form-label">Número de Telefone: </label>
+                            <input type="text" class="form-control" id="telefonePix">
+                        </div>
+                        <div id="campoCredito" style="display:none">
+                            <label for="numeroCredito" class="form-label">Número</label>
+                            <input type="number" class="form-control mb-3" id="numeroCredito">
+                                
+                            <label for="codigoCredito" class="form-label">Cód. Segurança</label>
+                            <input type="password" class="form-control mb-3" id="codigoCredito">
+                                
+                            <label for="parcelaCredito" class="form-label">Parcelas</label>
+                            <select class="form-select mb-4" id="parcelaCredito">
+                                <option selected disabled>Escolha o número de parcelas</option>
+                                <option>1x</option>
+                                <option>2x</option>
+                                <option>3x</option>
+                                <option>4x</option>
+                                <option>5x</option>
+                            </select>
+                        </div>
+                        <button id="botaoPagamento" class="btn btn-primary btn-sm mt-4 w-100" style="display:none">EFETUAR PAGAMENTO</button>
+                    </form>
                 </div>
             </div>
         </div>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script th:src="@{/js/script.js}"></script>
     </body>
 </html>

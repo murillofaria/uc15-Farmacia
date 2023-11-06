@@ -9,6 +9,17 @@ const nomeRemedio = document.querySelector("#nomeRemedio");
 const descricao = document.querySelector("#descricao");
 const valor = document.querySelector("#valor");
 
+const pix = document.querySelector("#pix");
+const campoPix = document.querySelector("#campoPix");
+const telefonePix = document.querySelector("#telefonePix");
+const cartaoCredito = document.querySelector("#cartaoCredito");
+const campoCredito = document.querySelector("#campoCredito");
+const numeroCredito = document.querySelector("#numeroCredito");
+const codigoCredito = document.querySelector("#codigoCredito");
+const parcelaCredito = document.querySelector("#parcelaCredito");
+const botaoPagamento = document.querySelector("#botaoPagamento");
+const formEfetuarPagamento = document.querySelector("#formEfetuarPagamento");
+
 /*formCadastroUsuario.addEventListener("submit", function(){
     //para não ocorrer submit
     event.preventDefault();
@@ -57,3 +68,43 @@ formCadastroRemedio.addEventListener("submit", function(){
     
     formCadastroRemedio.submit();
 });*/
+
+pix.addEventListener("click", function(){
+    campoCredito.style.display = "none";
+    campoPix.style.display = "block";
+    botaoPagamento.style.display = "block";
+});
+
+cartaoCredito.addEventListener("click", function(){
+    campoPix.style.display = "none";
+    campoCredito.style.display = "block";
+    botaoPagamento.style.display = "block";
+});
+
+formEfetuarPagamento.addEventListener("submit", function(){
+   event.preventDefault(); 
+   
+   if(telefonePix.value === "" && pix.checked){
+       alert("Insira o campo telefone corretamente.");
+       return;
+   }
+   
+   if(numeroCredito.value === ""){
+       alert("Insira o campo número corretamente.");
+       return;
+   }
+   
+   if(codigoCredito.value === ""){
+       alert("Insira o campo Cód. Segurança corretamente.");
+       return;
+   }
+   
+   if(parcelaCredito.value === "Escolha o número de parcelas"){
+       alert("Escolha quantas vezes parcelar.");
+       return;
+   }
+
+   alert("Pagamento bem-sucedido :)");
+   
+   formEfetuarPagamento.submit();
+});

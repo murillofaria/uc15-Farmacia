@@ -17,4 +17,4 @@ Drogaria de verdade
 Compra e venda de remédios.
 
 ## *Funcionalidades do sistema (requisitos)*
-Cadastro de usuários e medicamentos, controle de estoque, carrinho de compras, atendimento ao cliente, compra e venda de remédios com diferentes formas de pagamento e descontos.
+Cadastro de usuários e medicamentos, pesquisar medicamentos, controle de estoque, carrinho de compras, atendimento ao cliente, compra e venda de remédios com diferentes formas de pagamento e descontos.
