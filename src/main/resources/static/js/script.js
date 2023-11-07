@@ -1,4 +1,3 @@
-window.addEventListener("DOMContentLoaded", function(){
 const formCadastroUsuario = document.querySelector("#formCadastroUsuario");
 const nomeUsuario = document.querySelector("#nomeUsuario");
 const senha = document.querySelector("#senha");
@@ -21,105 +20,106 @@ const parcelaCredito = document.querySelector("#parcelaCredito");
 const botaoPagamento = document.querySelector("#botaoPagamento");
 const formEfetuarPagamento = document.querySelector("#formEfetuarPagamento");
 
-if(formCadastroUsuario){
-formCadastroUsuario.addEventListener("submit", function(){
-    //para não ocorrer submit
-    event.preventDefault();
-    
-    if(nomeUsuario.value === ""){
-        alert("Insira o campo nome corretamente.");
-        return;
-    }
-    
-    if(senha.value.length < 6){
-        alert("Insira uma senha de ao menos 6 caracteres.");
-        return;
-    }
-    
-    if(dataNascimento.value === ""){
-        alert("Insira o campo data corretamente.");
-        return;
-    }
-    
-    if(cpf.value === "" || cpf.value.length < 14 || cpf.value.length > 14){
-        alert("Insira o campo cpf corretamente.");
-        return;
-    }
-    
-    //se todos os campos estiverem corretos
-    formCadastroUsuario.submit();
-    alert("Usuário cadastrado com sucesso!");
-});
-};
+if (formCadastroUsuario) {
+    formCadastroUsuario.addEventListener("submit", function () {
+        //para não ocorrer submit
+        event.preventDefault();
 
-if(formCadastroRemedio){
-formCadastroRemedio.addEventListener("submit", function(){
-    event.preventDefault();
-    
-    if(nomeRemedio.value === ""){
-        alert("Insira o campo nome do remédio corretamente.");
-        return;
-    };
-    
-    if(descricao.value === ""){
-        alert("Insira o campo descrição corretamente.");
-        return;
-    };
-    
-    if(valor.value === ""){
-        alert("Insira o campo valor corretamente.");
-        return;
-    };
-    
-    formCadastroRemedio.submit();
-    alert("Remédio cadastrado com sucesso!");
-});
-};
+        if (nomeUsuario.value === "") {
+            alert("Insira o campo nome corretamente.");
+            return;
+        }
+        ;
 
-if(pix){
-pix.addEventListener("click", function(){
+        if (senha.value.length < 6) {
+            alert("Insira uma senha de ao menos 6 caracteres.");
+            return;
+        }
+        ;
+
+        if (dataNascimento.value === "") {
+            alert("Insira o campo data corretamente.");
+            return;
+        }
+        ;
+
+        if (cpf.value === "" || cpf.value.length < 14 || cpf.value.length > 14) {
+            alert("Insira o campo cpf corretamente.");
+            return;
+        }
+        ;
+
+        //se todos os campos estiverem corretos
+        formCadastroUsuario.submit();
+        alert("Usuário cadastrado com sucesso!");
+    });
+}
+
+if (formCadastroRemedio) {
+    formCadastroRemedio.addEventListener("submit", function () {
+        event.preventDefault();
+
+        if (nomeRemedio.value === "") {
+            alert("Insira o campo nome do remédio corretamente.");
+            return;
+        }
+        ;
+
+        if (descricao.value === "") {
+            alert("Insira o campo descrição corretamente.");
+            return;
+        }
+        ;
+
+        if (valor.value <= 0.0) {
+            alert("Insira o campo valor corretamente.");
+            return;
+        }
+        ;
+
+        formCadastroRemedio.submit();
+        alert("Remédio cadastrado com sucesso!");
+    });
+}
+
+pix.addEventListener("click", function () {
     formEfetuarPagamento.style.display = "block";
     campoCredito.style.display = "none";
     campoPix.style.display = "block";
     botaoPagamento.style.display = "block";
 });
-};
 
-if(cartaoCredito){
-cartaoCredito.addEventListener("click", function(){
+cartaoCredito.addEventListener("click", function () {
     formEfetuarPagamento.style.display = "block";
     campoPix.style.display = "none";
     campoCredito.style.display = "block";
     botaoPagamento.style.display = "block";
 });
-};
 
-if(formEfetuarPagamento){
-formEfetuarPagamento.addEventListener("submit", function(){
-   event.preventDefault(); 
-   
-   if(telefonePix.value === "" && pix.checked){
-       alert("Insira o campo telefone corretamente.");
-       return;
-   }
-   
-   if(numeroCredito.value === "" && cartaoCredito.checked){
-       alert("Insira o campo número corretamente.");
-       return;
-   }
-   
-   if(codigoCredito.value === "" && cartaoCredito.checked){
-       alert("Insira o campo Cód. Segurança corretamente.");
-       return;
-   }
-   
-   if(parcelaCredito.value === "Escolha o número de parcelas" && cartaoCredito.checked){
-       alert("Escolha quantas vezes parcelar.");
-       return;
-   }
+formEfetuarPagamento.addEventListener("submit", function () {
+    event.preventDefault();
 
-   alert("Pagamento bem-sucedido :)");
-   
-   formEfetuarPagamento.submit();
+    if (telefonePix.value === "" && pix.checked) {
+        alert("Insira o campo telefone corretamente.");
+        return;
+    }
+
+    if (numeroCredito.value === "" && cartaoCredito.checked) {
+        alert("Insira o campo número corretamente.");
+        return;
+    }
+
+    if (codigoCredito.value === "" && cartaoCredito.checked) {
+        alert("Insira o campo Cód. Segurança corretamente.");
+        return;
+    }
+
+    if (parcelaCredito.value === "Escolha o número de parcelas" && cartaoCredito.checked) {
+        alert("Escolha quantas vezes parcelar.");
+        return;
+    }
+
+    alert("Pagamento bem-sucedido :)");
+
+    formEfetuarPagamento.submit();
 });
-}});
