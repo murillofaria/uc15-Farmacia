@@ -48,6 +48,7 @@ formCadastroUsuario.addEventListener("submit", function(){
     
     //se todos os campos estiverem corretos
     formCadastroUsuario.submit();
+    alert("Usuário cadastrado com sucesso!");
 });
 };
 
@@ -71,6 +72,7 @@ formCadastroRemedio.addEventListener("submit", function(){
     };
     
     formCadastroRemedio.submit();
+    alert("Remédio cadastrado com sucesso!");
 });
 };
 
