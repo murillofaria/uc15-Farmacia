@@ -6,8 +6,8 @@ public class Remedio {
     private String nome;
     private String descricao;
     private double valor;
-    
-    public Remedio(){
+
+    public Remedio() {
     }
 
     public Remedio(int id, String nome, String descricao, double valor) {
@@ -48,6 +48,5 @@ public class Remedio {
     public void setValor(double valor) {
         this.valor = valor;
     }
-    
-    
+
 }

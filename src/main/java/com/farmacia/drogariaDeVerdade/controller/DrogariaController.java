@@ -41,7 +41,6 @@ public class DrogariaController {
 
     @PostMapping("/tela_cadastro_remedio")
     public String cadastrarRemedio(@ModelAttribute Remedio remedio) {
-        //auto increment caseiro kkkkk
         remedio.setId(remedios.size() + 1);
 
         remedios.add(remedio);

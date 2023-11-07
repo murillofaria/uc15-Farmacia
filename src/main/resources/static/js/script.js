@@ -1,3 +1,4 @@
+window.addEventListener("DOMContentLoaded", function(){
 const formCadastroUsuario = document.querySelector("#formCadastroUsuario");
 const nomeUsuario = document.querySelector("#nomeUsuario");
 const senha = document.querySelector("#senha");
@@ -20,7 +21,8 @@ const parcelaCredito = document.querySelector("#parcelaCredito");
 const botaoPagamento = document.querySelector("#botaoPagamento");
 const formEfetuarPagamento = document.querySelector("#formEfetuarPagamento");
 
-/*formCadastroUsuario.addEventListener("submit", function(){
+if(formCadastroUsuario){
+formCadastroUsuario.addEventListener("submit", function(){
     //para não ocorrer submit
     event.preventDefault();
     
@@ -47,7 +49,9 @@ const formEfetuarPagamento = document.querySelector("#formEfetuarPagamento");
     //se todos os campos estiverem corretos
     formCadastroUsuario.submit();
 });
+};
 
+if(formCadastroRemedio){
 formCadastroRemedio.addEventListener("submit", function(){
     event.preventDefault();
     
@@ -67,22 +71,28 @@ formCadastroRemedio.addEventListener("submit", function(){
     };
     
     formCadastroRemedio.submit();
-});*/
+});
+};
 
+if(pix){
 pix.addEventListener("click", function(){
     formEfetuarPagamento.style.display = "block";
     campoCredito.style.display = "none";
     campoPix.style.display = "block";
     botaoPagamento.style.display = "block";
 });
+};
 
+if(cartaoCredito){
 cartaoCredito.addEventListener("click", function(){
     formEfetuarPagamento.style.display = "block";
     campoPix.style.display = "none";
     campoCredito.style.display = "block";
     botaoPagamento.style.display = "block";
 });
+};
 
+if(formEfetuarPagamento){
 formEfetuarPagamento.addEventListener("submit", function(){
    event.preventDefault(); 
    
@@ -110,3 +120,4 @@ formEfetuarPagamento.addEventListener("submit", function(){
    
    formEfetuarPagamento.submit();
 });
+}});

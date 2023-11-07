@@ -1,13 +1,14 @@
 package com.farmacia.drogariaDeVerdade.model;
 
 public class Usuario {
+
     private int id;
     private String nome;
     private String senha;
     private String data;
     private String cpf;
-    
-    public Usuario(){
+
+    public Usuario() {
     }
 
     public Usuario(int id, String nome, String senha, String data, String cpf) {
@@ -57,5 +58,5 @@ public class Usuario {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
+
 }
