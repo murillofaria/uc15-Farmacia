@@ -14,12 +14,12 @@
             </div>
             
             <div class="row justify-content-center mt-5">
-                <div class="col-8 justify-content-center d-flex border border-primary">
-                    <div class="form-check me-5 border border-dark px-4 py-2">
+                <div class="col-8 justify-content-center d-flex">
+                    <div class="form-check me-5 px-4 py-2">
                         <input class="form-check-input" type="radio" name="formaPagamento" id="pix">
                         <label class="form-check-label" for="pix">PIX</label>
                     </div>
-                    <div class="form-check border border-dark px-4 py-2 d-flex">
+                    <div class="form-check px-4 py-2">
                         <input class="form-check-input" type="radio" name="formaPagamento" id="cartaoCredito">
                         <label class="form-check-label" for="cartaoCredito">Cartão de crédito</label>
                     </div>
@@ -28,19 +28,19 @@
             
             <div class="row justify-content-center mt-4">
                 <div class="col-8 justify-content-center d-flex">
-                    <form id="formEfetuarPagamento" th:action="@{/tela_forma_pagamento}" method="POST">
+                    <form class="border rounded p-3 bg-body-tertiary" id="formEfetuarPagamento" th:action="@{/tela_forma_pagamento}" method="POST" style="display:none">
                         <div id="campoPix" style="display:none">
-                            <label for="telefonePix" class="form-label">Número de Telefone: </label>
+                            <label for="telefonePix" class="form-label">Número de Telefone:</label>
                             <input type="text" class="form-control" id="telefonePix">
                         </div>
                         <div id="campoCredito" style="display:none">
-                            <label for="numeroCredito" class="form-label">Número</label>
+                            <label for="numeroCredito" class="form-label">Número:</label>
                             <input type="number" class="form-control mb-3" id="numeroCredito">
                                 
-                            <label for="codigoCredito" class="form-label">Cód. Segurança</label>
+                            <label for="codigoCredito" class="form-label">Cód. Segurança:</label>
                             <input type="password" class="form-control mb-3" id="codigoCredito">
                                 
-                            <label for="parcelaCredito" class="form-label">Parcelas</label>
+                            <label for="parcelaCredito" class="form-label">Parcelas:</label>
                             <select class="form-select mb-4" id="parcelaCredito">
                                 <option selected disabled>Escolha o número de parcelas</option>
                                 <option>1x</option>
@@ -50,7 +50,7 @@
                                 <option>5x</option>
                             </select>
                         </div>
-                        <button id="botaoPagamento" class="btn btn-primary btn-sm mt-4 w-100" style="display:none">EFETUAR PAGAMENTO</button>
+                        <button id="botaoPagamento" class="btn btn-success btn-sm mt-4 w-100" style="display:none">EFETUAR PAGAMENTO</button>
                     </form>
                 </div>
             </div>

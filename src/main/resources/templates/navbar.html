@@ -7,25 +7,25 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
-    <body class="font-monospace">
-        <nav class="navbar navbar-expand-lg bg-warning shadow-sm">
-                <div class="col border border-primary">
+    <body class="font-monospace bg-light-subtle">
+        <nav class="navbar navbar-expand-lg bg-success shadow-sm border border-top-0 rounded-bottom">
+                <div class="col">
                     <a class="navbar-brand fw-semibold fs-4" th:href="@{/tela_inicial}">
-                        <img th:src="@{/images/imagem_logo.png}" class="mx-2" width="50">
-                        Drogaria de verdade
-                        <span class="fst-italic fs-6 text-decoration-underline">(não, ela não é de verdade)</span>
+                        <img th:src="@{/images/imagem_logo.png}" class="ms-2" width="55">
+                        <span class="text-white">Drogaria de verdade</span>
+                        <span class="fs-6 text-decoration-underline text-white">(não, ela não é de verdade)</span>
                     </a>
                 </div>
                 
                 <div class="collapse navbar-collapse">
-                    <div class="col border border-danger">
+                    <div class="col">
                         <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Digite aqui">
-                            <button class="btn btn-primary" type="submit">PESQUISAR</button>
+                            <input class="form-control me-2 fst-italic" type="search" placeholder="Digite aqui">
+                            <button class="btn btn-dark" type="submit">PESQUISAR</button>
                         </form>
                     </div>
 
-                    <div class="col border border-info d-flex">
+                    <div class="col d-flex">
                         <a class="ms-5" th:href="@{/tela_cadastro_usuario}">
                             <img th:src="@{/images/imagem_usuario.png}" width="45">
                         </a>

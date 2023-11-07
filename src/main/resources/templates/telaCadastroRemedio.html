@@ -12,9 +12,13 @@
             <div class="row">
                 <header th:insert="navbar.html"></header>
             </div>
-        
             <div class="row d-flex justify-content-center mt-5">
-                <div class="col-4 border border-danger">
+                <div class="col-4">
+                    <span class="fs-2 fw-bold">CADASTRAR REMÉDIO</span>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-4 border rounded p-3 bg-body-tertiary">
                     <form id="formCadastroRemedio" th:action="@{/tela_cadastro_remedio}" method="POST">
                         <div class="mb-3">
                             <label for="nomeRemedio" class="form-label fs-5">Nome do Remédio</label>
@@ -28,7 +32,7 @@
                             <label for="valor" class="form-label fs-5">Valor</label>
                             <input type="number" class="form-control" id="valor" th:field="${remedio.valor}">
                         </div>
-                        <button type="submit" class="btn btn-primary fs-5">CADASTRAR</button>
+                        <button type="submit" class="btn btn-success fs-5">CADASTRAR</button>
                     </form>
                 </div>
             </div>

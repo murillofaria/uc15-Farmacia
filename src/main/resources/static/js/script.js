@@ -70,12 +70,14 @@ formCadastroRemedio.addEventListener("submit", function(){
 });*/
 
 pix.addEventListener("click", function(){
+    formEfetuarPagamento.style.display = "block";
     campoCredito.style.display = "none";
     campoPix.style.display = "block";
     botaoPagamento.style.display = "block";
 });
 
 cartaoCredito.addEventListener("click", function(){
+    formEfetuarPagamento.style.display = "block";
     campoPix.style.display = "none";
     campoCredito.style.display = "block";
     botaoPagamento.style.display = "block";
@@ -89,17 +91,17 @@ formEfetuarPagamento.addEventListener("submit", function(){
        return;
    }
    
-   if(numeroCredito.value === ""){
+   if(numeroCredito.value === "" && cartaoCredito.checked){
        alert("Insira o campo número corretamente.");
        return;
    }
    
-   if(codigoCredito.value === ""){
+   if(codigoCredito.value === "" && cartaoCredito.checked){
        alert("Insira o campo Cód. Segurança corretamente.");
        return;
    }
    
-   if(parcelaCredito.value === "Escolha o número de parcelas"){
+   if(parcelaCredito.value === "Escolha o número de parcelas" && cartaoCredito.checked){
        alert("Escolha quantas vezes parcelar.");
        return;
    }

@@ -12,9 +12,13 @@
             <div class="row">
                 <header th:insert="navbar.html"></header>
             </div>
-        
             <div class="row d-flex justify-content-center mt-5">
-                <div class="col-4 border border-primary">
+                <div class="col-4">
+                    <span class="fs-2 fw-bold">CADASTRAR USUÁRIO</span>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-4 border rounded p-3 bg-body-tertiary">
                     <form id="formCadastroUsuario" th:action="@{/tela_cadastro_usuario}" method="POST">
                         <div class="mb-3">
                             <label for="nomeUsuario" class="form-label fs-5">Nome de Usuário</label>
@@ -32,7 +36,7 @@
                             <label for="cpf" class="form-label fs-5">CPF</label>
                             <input type="text" class="form-control" id="cpf" th:field="${usuario.cpf}">
                         </div>
-                        <button type="submit" class="btn btn-primary fs-5">CADASTRAR</button>
+                        <button type="submit" class="btn btn-success fs-5">CADASTRAR</button>
                     </form>
                 </div>
             </div>
