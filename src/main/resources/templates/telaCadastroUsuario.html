@@ -19,22 +19,22 @@
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-4 border rounded p-3 bg-body-tertiary">
-                    <form id="formCadastroUsuario" th:action="@{/tela_cadastro_usuario}" method="POST">
+                    <form id="formCadastroUsuario" th:action="@{/drogaria/usuario/cadastro}" th:object="${usuario}" method="POST">
                         <div class="mb-3">
                             <label for="nomeUsuario" class="form-label fs-5">Nome de Usuário</label>
-                            <input type="text" class="form-control" id="nomeUsuario" th:field="${usuario.nome}">
+                            <input type="text" class="form-control" id="nomeUsuario" th:field="*{nome}">
                         </div>
                         <div class="mb-3">
                             <label for="senha" class="form-label fs-5">Senha</label>
-                            <input type="password" class="form-control" id="senha" th:field="${usuario.senha}">
+                            <input type="password" class="form-control" id="senha" th:field="*{senha}">
                         </div>
                         <div class="mb-3">
                             <label for="dataNascimento" class="form-label fs-5">Data de Nascimento</label>
-                            <input type="date" class="form-control" id="dataNascimento" th:field="${usuario.data}">
+                            <input type="date" class="form-control" id="dataNascimento" th:field="*{data}">
                         </div>  
                         <div class="mb-3">
                             <label for="cpf" class="form-label fs-5">CPF</label>
-                            <input type="text" class="form-control" id="cpf" th:field="${usuario.cpf}">
+                            <input type="text" class="form-control" id="cpf" th:field="*{cpf}">
                         </div>
                         <button type="submit" class="btn btn-success fs-5">CADASTRAR</button>
                     </form>

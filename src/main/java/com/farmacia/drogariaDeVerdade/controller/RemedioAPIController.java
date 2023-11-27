@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/drogaria/remedio")
+@RequestMapping("/drogaria/remedioAPI")
 public class RemedioAPIController {
 
     @Autowired

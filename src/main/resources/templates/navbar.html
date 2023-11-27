@@ -10,7 +10,7 @@
     <body class="font-monospace bg-light-subtle">
         <nav class="navbar navbar-expand-lg bg-success shadow-sm border border-top-0 rounded-bottom">
                 <div class="col">
-                    <a class="navbar-brand fw-semibold fs-4" th:href="@{/tela_inicial}">
+                    <a class="navbar-brand fw-semibold fs-4" th:href="@{/drogaria}">
                         <img th:src="@{/images/imagem_logo.png}" class="ms-2" width="55">
                         <span class="text-white">Drogaria de verdade</span>
                         <span class="fs-6 text-decoration-underline text-white">(não, ela não é de verdade)</span>
@@ -24,12 +24,15 @@
                     </div>
 
                     <div class="col d-flex">
-                        <a class="ms-5" th:href="@{/tela_cadastro_usuario}">
+                        <a class="ms-5" th:href="@{/drogaria/usuario/cadastro}">
                             <img th:src="@{/images/imagem_usuario.png}" width="45">
                         </a>
 
                         <a class="ms-5" th:href="@{/tela_carrinho_compra}">
                             <img th:src="@{/images/imagem_carrinho.png}" width="45">
+                        </a>
+                        <a class="ms-5" th:href="@{/drogaria/remedio/cadastro}">
+                            <img th:src="@{/images/imagem_cadastro_remedio.png}" width="45">
                         </a>
                     </div>
                 </div>

@@ -19,18 +19,18 @@
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-4 border rounded p-3 bg-body-tertiary">
-                    <form id="formCadastroRemedio" th:action="@{/tela_cadastro_remedio}" method="POST">
+                    <form id="formCadastroRemedio" th:action="@{/drogaria/remedio/cadastro}" th:object="${remedio}" method="POST">
                         <div class="mb-3">
                             <label for="nomeRemedio" class="form-label fs-5">Nome do Remédio</label>
-                            <input type="text" class="form-control" id="nomeRemedio" th:field="${remedio.nome}">
+                            <input type="text" class="form-control" id="nomeRemedio" th:field="*{nome}">
                         </div>
                         <div class="mb-3">
                             <label for="descricao" class="form-label fs-5">Descrição</label>
-                            <input type="text" class="form-control" id="descricao" th:field="${remedio.descricao}">
+                            <input type="text" class="form-control" id="descricao" th:field="*{descricao}">
                         </div>
                         <div class="mb-3">
                             <label for="valor" class="form-label fs-5">Valor</label>
-                            <input type="number" class="form-control" id="valor" th:field="${remedio.valor}">
+                            <input type="number" class="form-control" id="valor" th:field="*{valor}">
                         </div>
                         <button type="submit" class="btn btn-success fs-5">CADASTRAR</button>
                     </form>
