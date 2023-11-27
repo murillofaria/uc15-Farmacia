@@ -1,7 +1,10 @@
 package com.farmacia.drogariaDeVerdade.controller;
 
+import com.farmacia.drogariaDeVerdade.model.Remedio;
 import com.farmacia.drogariaDeVerdade.model.Usuario;
+import com.farmacia.drogariaDeVerdade.service.RemedioService;
 import com.farmacia.drogariaDeVerdade.service.UsuarioService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +20,13 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
     
+    @Autowired
+    RemedioService remedioService;
+    
     @GetMapping("")
-    public String exibirTelaInicial(){
+    public String exibirTelaInicial(Model model){
+        List<Remedio> listRemedio = remedioService.listarRemedios();
+        model.addAttribute("remedios", listRemedio);
         return "telaInicial";
     }
     
