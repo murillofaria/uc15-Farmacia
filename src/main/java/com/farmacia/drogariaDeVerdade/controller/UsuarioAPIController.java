@@ -1,0 +1,25 @@
+package com.farmacia.drogariaDeVerdade.controller;
+
+import com.farmacia.drogariaDeVerdade.model.Usuario;
+import com.farmacia.drogariaDeVerdade.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/drogaria/usuario")
+public class UsuarioAPIController {
+
+    @Autowired
+    UsuarioService usuarioService;
+
+    @PostMapping("/cadastro")
+    public ResponseEntity<Usuario> adicionarUsuario(@RequestBody Usuario objUsuario) {
+        Usuario usuarioCadastrado = usuarioService.cadastrarUsuario(objUsuario);
+        return new ResponseEntity<>(usuarioCadastrado, HttpStatus.CREATED);
+    }
+}
