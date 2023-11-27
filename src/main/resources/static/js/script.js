@@ -29,25 +29,21 @@ if (formCadastroUsuario) {
             alert("Insira o campo nome corretamente.");
             return;
         }
-        ;
 
         if (senha.value.length < 6) {
             alert("Insira uma senha de ao menos 6 caracteres.");
             return;
         }
-        ;
 
         if (dataNascimento.value === "") {
             alert("Insira o campo data corretamente.");
             return;
         }
-        ;
 
         if (cpf.value === "" || cpf.value.length < 14 || cpf.value.length > 14) {
             alert("Insira o campo cpf corretamente.");
             return;
         }
-        ;
 
         //se todos os campos estiverem corretos
         formCadastroUsuario.submit();
