@@ -24,10 +24,16 @@ public class RemedioAPIController {
         Remedio remedioCadastrado = remedioService.cadastrarRemedio(objRemedio);
         return new ResponseEntity<>(remedioCadastrado, HttpStatus.CREATED);
     }
-    
+
     @GetMapping("/lista")
-    public ResponseEntity<List> mostrarRemedios(){
+    public ResponseEntity<List> mostrarRemedios() {
         List<Remedio> listRemedios = remedioService.listarRemedios();
         return new ResponseEntity<>(listRemedios, HttpStatus.OK);
+    }
+
+    @PostMapping("/procura")
+    public ResponseEntity<Remedio> pesquisarRemedio(@RequestBody Remedio nomeRemedio) {
+        Remedio objRemedio = remedioService.procurarRemedio(nomeRemedio);
+        return new ResponseEntity<>(objRemedio, HttpStatus.OK);
     }
 }

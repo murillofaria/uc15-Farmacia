@@ -19,8 +19,12 @@
                 
                 <div class="collapse navbar-collapse">
                     <div class="col d-flex">
-                        <input class="form-control me-2 fst-italic" placeholder="Digite aqui">
-                        <button class="btn btn-dark">PESQUISAR</button>
+                        <form th:action="@{/drogaria/remedio/pesquisa}" th:object="${nomeRemedio}" method="POST">
+                            <div class="d-flex">
+                                <input class="form-control me-2 fst-italic" placeholder="Digite aqui" th:field="*{nome}">
+                                <button class="btn btn-dark" type="submit">PESQUISAR</button>
+                            </div>
+                        </form>
                     </div>
 
                     <div class="col d-flex">

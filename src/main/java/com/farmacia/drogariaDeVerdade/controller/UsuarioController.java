@@ -27,12 +27,14 @@ public class UsuarioController {
     public String exibirTelaInicial(Model model){
         List<Remedio> listRemedio = remedioService.listarRemedios();
         model.addAttribute("remedios", listRemedio);
+        model.addAttribute("nomeRemedio", new Remedio());
         return "telaInicial";
     }
     
     @GetMapping("/usuario/cadastro")
     public String exibirCadastroUsuario(Model model) {
         model.addAttribute("usuario", new Usuario());
+        model.addAttribute("nomeRemedio", new Remedio());
         return "telaCadastroUsuario";
     }
     

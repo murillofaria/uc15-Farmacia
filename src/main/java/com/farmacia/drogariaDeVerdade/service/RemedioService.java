@@ -17,9 +17,19 @@ public class RemedioService {
         remedioRepository.save(objRemedio);
         return objRemedio;
     }
-    
-    public List<Remedio> listarRemedios(){
+
+    public List<Remedio> listarRemedios() {
         return remedioRepository.findAll();
+    }
+
+    public Remedio procurarRemedio(Remedio nomeRemedio) {
+        List<Remedio> listRemedio = listarRemedios();
+        for (Remedio objRemedio : listRemedio) {
+            if (objRemedio.getNome().equals(nomeRemedio.getNome())) {
+                return objRemedio;
+            }
+        }
+        return null;
     }
 
 }
