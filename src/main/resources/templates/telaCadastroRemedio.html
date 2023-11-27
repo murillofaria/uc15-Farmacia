@@ -32,6 +32,10 @@
                             <label for="valor" class="form-label fs-5">Valor</label>
                             <input type="number" class="form-control" id="valor" th:field="*{valor}">
                         </div>
+                        <div class="mb-3 form-check">
+                            <input class="form-check-input" type="checkbox" th:value="true" th:field="*{promocao}" id="promocao">
+                            <label class="form-check-label" for="promocao">Em Promoção</label>
+                        </div>
                         <button type="submit" class="btn btn-success fs-5">CADASTRAR</button>
                     </form>
                 </div>

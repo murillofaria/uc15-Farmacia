@@ -23,4 +23,5 @@ public class Remedio {
     private String nome;
     private String descricao;
     private double valor;
+    private boolean promocao=false;
 }
