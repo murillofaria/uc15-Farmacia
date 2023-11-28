@@ -26,7 +26,7 @@
                                     <h5 class="card-title" th:text="${remedio.nome}"></h5>
                                     <p class="card-text" th:text="${remedio.descricao}" ></p>
                                     <h6 class="card-text" th:text="'R$: '+${remedio.valor}"></h6>
-                                    <a th:href="@{'/drogaria/remedio/carrinho/'+${remedio.id}}" class="btn btn-success">COMPRAR</a>
+                                    <a th:href="@{'/drogaria/carrinho/'+${remedio.id}}" class="btn btn-success">COMPRAR</a>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                                     <h5 th:text="${remedio.nome}" class="card-title"></h5>
                                     <p th:text="${remedio.descricao}" class="card-text"></p>
                                     <h6 th:text="'R$: '+${remedio.valor}" class="card-text"></h6>
-                                    <a th:href="@{'/drogaria/remedio/carrinho/'+${remedio.id}}" class="btn btn-success">COMPRAR</a>
+                                    <a th:href="@{'/drogaria/carrinho'}" class="btn btn-success">COMPRAR</a>
                                 </div>
                             </div>
                         </div>

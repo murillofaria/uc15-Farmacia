@@ -13,14 +13,14 @@
                 <header th:insert="navbar.html"></header>
             </div>
             
-            <div class="row mt-5 d-flex justify-content-center">
+            <div class="row mt-5 d-flex justify-content-center" th:each="remedio : ${remedios}">
                 <div class="col-7 d-flex align-items-center justify-content-end">
                     <img class="me-1" th:src="@{/images/imagem_comprar_remedio.png}" width="30">
-                    <span class="me-3 fs-4" th:if="${comprarRemedio}" th:text="${comprarRemedio.nome}"></span>
-                    <span class="me-3 fs-4" th:unless="${comprarRemedio}">Nome do remédio</span>
-                    
-                    <span class="me-3" th:if="${comprarRemedio}" th:text="'R$: '+${comprarRemedio.valor}"></span>
-                    <span class="me-3" th:unless="${comprarRemedio}">Preço do remédio</span>
+                    <span class="me-3 fs-4" th:text="${remedio.nome}"></span>
+                    <div class="col-1 me-3">
+                    <input type="number" class="form-control fs-5 text-center" id="qtdRemedio">
+                    </div>
+                    <span class="me-3 fw-bold fs-5" th:text="'R$: '+${remedio.valor}" style="color: darkgreen"></span>
                     <a href="/tela_carrinho_compra">
                         <img th:src="@{/images/imagem_lixeira.png}" width="30">
                     </a>

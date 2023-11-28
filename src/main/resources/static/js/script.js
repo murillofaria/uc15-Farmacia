@@ -20,6 +20,8 @@ const parcelaCredito = document.querySelector("#parcelaCredito");
 const botaoPagamento = document.querySelector("#botaoPagamento");
 const formEfetuarPagamento = document.querySelector("#formEfetuarPagamento");
 
+const qtdRemedio = document.querySelector("#qtdRemedio").defaultValue = 1;
+
 if (formCadastroUsuario) {
     formCadastroUsuario.addEventListener("submit", function () {
         //para não ocorrer submit

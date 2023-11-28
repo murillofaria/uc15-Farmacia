@@ -16,19 +16,6 @@ public class DrogariaController {
 
     public List<Remedio> remedios = new ArrayList<>();
 
-    @PostMapping("/tela_cadastro_remedio")
-    public String cadastrarRemedio(@ModelAttribute Remedio remedio) {
-        remedio.setId(remedios.size() + 1);
-
-        remedios.add(remedio);
-        return "redirect:/tela_inicial";
-    }
-
-    @GetMapping("/tela_carrinho_compra")
-    public String exibirCarrinhoCompraVazio() {
-        return "telaCarrinhoCompra";
-    }
-
     @GetMapping("/tela_carrinho_compra/{id}")
     public String exibirCarrinhoCompraPopulado(@PathVariable("id") int id, Model model) {
         for (Remedio procurarRemedio : remedios) {
