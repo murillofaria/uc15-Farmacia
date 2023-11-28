@@ -67,4 +67,22 @@ public class RemedioController {
         model.addAttribute("remedios", remedios);
         return "telaCarrinhoCompra";
     }
+
+    @GetMapping("/carrinho/deletar/{idRemedio}")
+    public String deletarItemCarrinho(Model model, @PathVariable("idRemedio") Integer idRemedio) {
+        model.addAttribute("nomeRemedio", new Remedio());
+        List<Remedio> listRemedio = remedioService.listarRemedios();
+        for (int i = 0; i < listRemedio.size(); i++) {
+            if(listRemedio.get(i).getId().equals(idRemedio)){
+                remedios.remove(listRemedio.get(i));
+            }
+        }
+        return "redirect:/drogaria/carrinho";
+    }
+
+    @GetMapping("/pagamento")
+    public String exibirFormaPagamento(Model model) {
+        model.addAttribute("nomeRemedio", new Remedio());
+        return "telaFormaPagamento";
+    }
 }

@@ -14,24 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class DrogariaController {
 
-    public List<Remedio> remedios = new ArrayList<>();
-
-    @GetMapping("/tela_carrinho_compra/{id}")
-    public String exibirCarrinhoCompraPopulado(@PathVariable("id") int id, Model model) {
-        for (Remedio procurarRemedio : remedios) {
-            if (procurarRemedio.getId() == id) {
-                Remedio comprarRemedio = procurarRemedio;
-                model.addAttribute("comprarRemedio", comprarRemedio);
-            }
-        }
-        return "telaCarrinhoCompra";
-    }
-
-    @GetMapping("/tela_forma_pagamento")
-    public String exibirFormaPagamento() {
-        return "telaFormaPagamento";
-    }
-
     @PostMapping("/tela_forma_pagamento")
     public String efetuarPagamento() {
         return "redirect:/tela_inicial";
