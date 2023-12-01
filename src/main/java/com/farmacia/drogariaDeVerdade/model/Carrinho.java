@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,15 +15,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "remedio")
-public class Remedio {
-
+@Table(name = "carrinho")
+public class Carrinho {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     
-    private String nome;
-    private String descricao;
-    private double valor;
-    private boolean promocao=false;
+    @ManyToOne
+    @JoinColumn(name = "fk_remedio")
+    private Remedio remedio;
+    
+    private int qtd_remedio=1;    
 }

@@ -31,5 +31,9 @@ public class RemedioService {
         }
         return null;
     }
+    
+    public Remedio procurarRemedioPorId(Integer idRemedio){
+        return remedioRepository.findById(idRemedio).orElseThrow();
+    }
 
 }

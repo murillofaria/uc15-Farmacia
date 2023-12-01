@@ -20,6 +20,20 @@ const parcelaCredito = document.querySelector("#parcelaCredito");
 const botaoPagamento = document.querySelector("#botaoPagamento");
 const formEfetuarPagamento = document.querySelector("#formEfetuarPagamento");
 
+const botaoQuantidade = document.querySelector("#botaoQuantidade");
+const remediosQuantidade = document.querySelectorAll(".qtd_remedio");
+
+remediosQuantidade.forEach(function (remedioQtd) {
+    remedioQtd.addEventListener("input", () => {
+        if (remedioQtd.value < 1) {
+            remedioQtd.value = 1;
+            return;
+        }
+
+        botaoQuantidade.click();
+    });
+});
+
 if (formCadastroUsuario) {
     formCadastroUsuario.addEventListener("submit", function () {
         //para não ocorrer submit

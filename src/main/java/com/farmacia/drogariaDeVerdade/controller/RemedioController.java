@@ -21,6 +21,7 @@ public class RemedioController {
     RemedioService remedioService;
 
     List<Remedio> remedios = new ArrayList<>();
+    private double total;
 
     @GetMapping("/remedio/cadastro")
     public String exibirCadastroRemedio(Model model) {
@@ -37,52 +38,13 @@ public class RemedioController {
 
     @PostMapping("/remedio/pesquisa")
     public String pesquisarRemedio(@ModelAttribute("nomeRemedio") Remedio nomeRemedio, Model model) {
+        Remedio remedioEncontrado = remedioService.procurarRemedio(nomeRemedio);
         List<Remedio> listRemedio = remedioService.listarRemedios();
-        for (Remedio objRemedio : listRemedio) {
-            if (objRemedio.getNome().equals(nomeRemedio.getNome())) {
-                model.addAttribute("remedios", objRemedio);
-                return "telaInicial";
-            }
+        if (remedioEncontrado != null) {
+            model.addAttribute("remedios", remedioEncontrado);
+        } else {
+            model.addAttribute("remedios", listRemedio);
         }
-        model.addAttribute("remedios", listRemedio);
         return "telaInicial";
-    }
-
-    @GetMapping("/carrinho/{idRemedio}")
-    public String exibirCarrinhoId(Model model, @PathVariable("idRemedio") Integer idRemedio) {
-        model.addAttribute("nomeRemedio", new Remedio());
-        List<Remedio> listRemedio = remedioService.listarRemedios();
-        for (Remedio objRemedio : listRemedio) {
-            int objRemedioId = objRemedio.getId();
-            if (objRemedioId == idRemedio && !remedios.contains(objRemedio)) {
-                remedios.add(objRemedio);
-            }
-        }
-        return "redirect:/drogaria/carrinho";
-    }
-
-    @GetMapping("/carrinho")
-    public String exibirCarrinhoCompleto(Model model) {
-        model.addAttribute("nomeRemedio", new Remedio());
-        model.addAttribute("remedios", remedios);
-        return "telaCarrinhoCompra";
-    }
-
-    @GetMapping("/carrinho/deletar/{idRemedio}")
-    public String deletarItemCarrinho(Model model, @PathVariable("idRemedio") Integer idRemedio) {
-        model.addAttribute("nomeRemedio", new Remedio());
-        List<Remedio> listRemedio = remedioService.listarRemedios();
-        for (int i = 0; i < listRemedio.size(); i++) {
-            if(listRemedio.get(i).getId().equals(idRemedio)){
-                remedios.remove(listRemedio.get(i));
-            }
-        }
-        return "redirect:/drogaria/carrinho";
-    }
-
-    @GetMapping("/pagamento")
-    public String exibirFormaPagamento(Model model) {
-        model.addAttribute("nomeRemedio", new Remedio());
-        return "telaFormaPagamento";
     }
 }

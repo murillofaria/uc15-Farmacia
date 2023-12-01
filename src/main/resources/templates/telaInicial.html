@@ -36,7 +36,7 @@
             
             <h4 class="text-start fw-semibold mt-5">Promoções</h4>
             <div class="row">
-                <div class="col-4" th:each="remedio : ${remedios}" th:if="${remedio.promocao == true}">
+                <div class="col-4" th:each="remedio : ${remedios}" th:unless="${remedio.promocao == false}">
                     <div class="card">
                         <div class="row g-0">
                             <div class="col-4">
@@ -47,7 +47,7 @@
                                     <h5 th:text="${remedio.nome}" class="card-title"></h5>
                                     <p th:text="${remedio.descricao}" class="card-text"></p>
                                     <h6 th:text="'R$: '+${remedio.valor}" class="card-text"></h6>
-                                    <a th:href="@{'/drogaria/carrinho'}" class="btn btn-success">COMPRAR</a>
+                                    <a th:href="@{'/drogaria/carrinho/'+${remedio.id}}" class="btn btn-success">COMPRAR</a>
                                 </div>
                             </div>
                         </div>
