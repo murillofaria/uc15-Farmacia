@@ -20,7 +20,6 @@ const parcelaCredito = document.querySelector("#parcelaCredito");
 const botaoPagamento = document.querySelector("#botaoPagamento");
 const formEfetuarPagamento = document.querySelector("#formEfetuarPagamento");
 
-const botaoQuantidade = document.querySelector("#botaoQuantidade");
 const remediosQuantidade = document.querySelectorAll(".qtd_remedio");
 
 remediosQuantidade.forEach(function (remedioQtd) {
@@ -29,8 +28,6 @@ remediosQuantidade.forEach(function (remedioQtd) {
             remedioQtd.value = 1;
             return;
         }
-
-        botaoQuantidade.click();
     });
 });
 

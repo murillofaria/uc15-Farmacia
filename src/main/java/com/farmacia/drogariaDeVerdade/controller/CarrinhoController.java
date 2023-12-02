@@ -39,7 +39,7 @@ public class CarrinhoController {
                 return "redirect:/drogaria/carrinho";
             }
         }
-        
+
         carrinhoPopulado.setRemedio(remedioEncontrado);
         carrinhoService.salvarRemedioCarrinho(carrinhoPopulado);
 
@@ -52,66 +52,24 @@ public class CarrinhoController {
         model.addAttribute("listCarrinho", listCarrinho);
         double totalValor = 0;
         for (int i = 0; i < listCarrinho.size(); i++) {
-            totalValor = totalValor + listCarrinho.get(i).getRemedio().getValor();
+            totalValor = totalValor + (listCarrinho.get(i).getRemedio().getValor() * listCarrinho.get(i).getQtd_remedio());
         }
         model.addAttribute("totalValor", totalValor);
         model.addAttribute("nomeRemedio", new Remedio());
         return "telaCarrinhoCompra";
     }
-    
-    @PostMapping("/carrinho/{id_carrinho}")
-    public String alterarQuantidadeRemedioCarrinho(@PathVariable("id_carrinho") int idCarrinho, @ModelAttribute("item") Carrinho itemCarrinho, Model model){
-        carrinhoService.atualizarItemCarrinho(idCarrinho, itemCarrinho);
+
+    @PostMapping("/carrinho")
+    public String alterarQuantidadeRemedioCarrinho(@ModelAttribute("item") Carrinho itemCarrinho, Model model) {
+        carrinhoService.atualizarItemCarrinho(itemCarrinho.getId(), itemCarrinho);
         model.addAttribute("nomeRemedio", new Remedio());
         return "redirect:/drogaria/carrinho";
     }
-    
+
     @GetMapping("/carrinho/deletar/{id}")
-    public String deletarItemCarrinho(@PathVariable("id") Integer idItemCarrinho){
+    public String deletarItemCarrinho(@PathVariable("id") Integer idItemCarrinho, Model model) {
         carrinhoService.excluirItemCarrinho(idItemCarrinho);
-        return "redirect:/drogaria/carrinho";
-    }
-
-    /*@GetMapping("/carrinho/{idRemedio}")
-    public String exibirCarrinhoId(Model model, @PathVariable("idRemedio") Integer idRemedio) {
         model.addAttribute("nomeRemedio", new Remedio());
-        List<Remedio> listRemedio = remedioService.listarRemedios();
-        for (Remedio objRemedio : listRemedio) {
-            int objRemedioId = objRemedio.getId();
-            if (objRemedioId == idRemedio && !remedios.contains(objRemedio)) {
-                remedios.add(objRemedio);
-            }
-        }
-        return "redirect:/drogaria/carrinho";
-    }
-    
-    @GetMapping("/carrinho")
-    public String exibirCarrinhoCompleto(Model model) {
-        model.addAttribute("nomeRemedio", new Remedio());
-        model.addAttribute("remedios", remedios);
-        if(!remedios.isEmpty()){
-            for(int i=0; i < remedios.size(); i++){
-                total = remedios.get(i).getValor() + total;
-                model.addAttribute("totalValor", total);
-            }
-        }
-        return "telaCarrinhoCompra";
-    }
-
-    @GetMapping("/carrinho/deletar/{idRemedio}")
-    public String deletarItemCarrinho(Model model, @PathVariable("idRemedio") Integer idRemedio) {
-        model.addAttribute("nomeRemedio", new Remedio());
-        List<Remedio> listRemedio = remedioService.listarRemedios();
-        for (int i = 0; i < listRemedio.size(); i++) {
-            if(listRemedio.get(i).getId().equals(idRemedio)){
-                if(total > listRemedio.get(i).getValor()){
-                    total = total - listRemedio.get(i).getValor();
-                }else{
-                    total = listRemedio.get(i).getValor() - total;
-                }
-                remedios.remove(listRemedio.get(i));
-            }
-        }
         return "redirect:/drogaria/carrinho";
     }
 
@@ -119,5 +77,5 @@ public class CarrinhoController {
     public String exibirFormaPagamento(Model model) {
         model.addAttribute("nomeRemedio", new Remedio());
         return "telaFormaPagamento";
-    }*/
+    }
 }

@@ -21,19 +21,19 @@ public class CarrinhoService {
     public List<Carrinho> mostrarItensCarrinho() {
         return carrinhoRepository.findAll();
     }
-    
-    public Carrinho buscarCarrinhoPorId(Integer idCarrinho){
+
+    public Carrinho buscarCarrinhoPorId(Integer idCarrinho) {
         return carrinhoRepository.findById(idCarrinho).orElseThrow();
     }
-    
-    public Carrinho atualizarItemCarrinho(Integer idCarrinho, Carrinho carrinhoEnviado){
+
+    public Carrinho atualizarItemCarrinho(Integer idCarrinho, Carrinho carrinhoEnviado) {
         Carrinho carrinhoEncontrado = buscarCarrinhoPorId(idCarrinho);
         carrinhoEncontrado.setQtd_remedio(carrinhoEnviado.getQtd_remedio());
         carrinhoRepository.save(carrinhoEncontrado);
         return carrinhoEncontrado;
     }
-    
-    public void excluirItemCarrinho(Integer id){
+
+    public void excluirItemCarrinho(Integer id) {
         Carrinho itemEncontrado = buscarCarrinhoPorId(id);
         carrinhoRepository.deleteById(itemEncontrado.getId());
     }
