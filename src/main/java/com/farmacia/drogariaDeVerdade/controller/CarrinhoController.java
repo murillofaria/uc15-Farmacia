@@ -78,4 +78,13 @@ public class CarrinhoController {
         model.addAttribute("nomeRemedio", new Remedio());
         return "telaFormaPagamento";
     }
+
+    @PostMapping("/pagamento")
+    public String finalizarCompra() {
+        List<Carrinho> listCarrinho = carrinhoService.mostrarItensCarrinho();
+        for (int i = 0; i < listCarrinho.size(); i++) {
+            carrinhoService.excluirItemCarrinho(listCarrinho.get(i).getId());
+        }
+        return "redirect:/drogaria";
+    }
 }
