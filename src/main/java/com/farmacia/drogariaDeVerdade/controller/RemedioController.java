@@ -21,7 +21,6 @@ public class RemedioController {
     RemedioService remedioService;
 
     List<Remedio> remedios = new ArrayList<>();
-    private double total;
 
     @GetMapping("/remedio/cadastro")
     public String exibirCadastroRemedio(Model model) {
@@ -46,5 +45,37 @@ public class RemedioController {
             model.addAttribute("remedios", listRemedio);
         }
         return "telaInicial";
+    }
+
+    @GetMapping("/remedio/estoque")
+    public String exibirEstoqueRemedio(Model model) {
+        List<Remedio> listRemedio = remedioService.listarRemedios();
+        model.addAttribute("remedios", listRemedio);
+        model.addAttribute("nomeRemedio", new Remedio());
+        return "telaEstoqueRemedio";
+    }
+
+    @GetMapping("/remedio/edit/{idRemedio}")
+    public String editarRemedio(Model model, @PathVariable("idRemedio") Integer idRemedio) {
+        List<Remedio> listRemedio = remedioService.listarRemedios();
+        for (Remedio objRemedio : listRemedio) {
+            if (objRemedio.getId().equals(idRemedio)) {
+                model.addAttribute("remedio", objRemedio);
+            }
+        }
+        model.addAttribute("nomeRemedio", new Remedio());
+        return "telaEditRemedio";
+    }
+
+    @PostMapping("/remedio/edit/{idRemedio}")
+    public String editandoRemedio(@PathVariable("idRemedio") Integer idRemedio, @ModelAttribute("remedio") Remedio remedioEditado) {
+        remedioService.atualizarRemedio(idRemedio, remedioEditado);
+        return "redirect:/drogaria/remedio/estoque";
+    }
+
+    @GetMapping("/remedio/deletar/{idRemedio}")
+    public String deletarRemedio(@PathVariable("idRemedio") Integer idRemedio) {
+        remedioService.excluir(idRemedio);
+        return "redirect:/drogaria/remedio/estoque";
     }
 }

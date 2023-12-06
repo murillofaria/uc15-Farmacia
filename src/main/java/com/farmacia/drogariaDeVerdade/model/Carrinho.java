@@ -26,5 +26,5 @@ public class Carrinho {
     @JoinColumn(name = "fk_remedio")
     private Remedio remedio;
     
-    private int qtd_remedio=1;    
+    private int qtd_remedio_carrinho=1;    
 }

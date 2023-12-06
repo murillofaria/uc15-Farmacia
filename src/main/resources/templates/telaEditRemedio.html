@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html>
     <head>
-        <title>Tela Cadastro Remédio</title>
+        <title>Tela Editar Remédio</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
@@ -14,12 +14,12 @@
             </div>
             <div class="row d-flex justify-content-center mt-5">
                 <div class="col-4">
-                    <span class="fs-2 fw-bold">CADASTRAR REMÉDIO</span>
+                    <span class="fs-2 fw-bold">EDITAR REMÉDIO</span>
                 </div>
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-4 border rounded p-3 bg-body-tertiary">
-                    <form id="formCadastroRemedio" th:action="@{/drogaria/remedio/cadastro}" th:object="${remedio}" method="POST">
+                    <form id="formEditRemedio" th:action="@{'/drogaria/remedio/edit/'+${remedio.id}}" th:object="${remedio}" method="POST">
                         <div class="mb-3">
                             <label for="nomeRemedio" class="form-label fs-5">Nome do Remédio</label>
                             <input type="text" class="form-control" id="nomeRemedio" th:field="*{nome}">
@@ -40,7 +40,14 @@
                             <input class="form-check-input" type="checkbox" th:value="true" th:field="*{promocao}" id="promocao">
                             <label class="form-check-label" for="promocao">Em Promoção</label>
                         </div>
-                        <button type="submit" class="btn btn-success fs-5">CADASTRAR</button>
+                        <div class="d-flex">
+                            <div class="col">
+                            <button type="submit" class="btn btn-primary fs-5">EDITAR</button>
+                            </div>
+                            <div class="col text-end">
+                            <a th:href="@{'/drogaria/remedio/deletar/'+${remedio.id}}" class="btn btn-danger fs-5">EXCLUIR</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -28,7 +28,7 @@ public class CarrinhoService {
 
     public Carrinho atualizarItemCarrinho(Integer idCarrinho, Carrinho carrinhoEnviado) {
         Carrinho carrinhoEncontrado = buscarCarrinhoPorId(idCarrinho);
-        carrinhoEncontrado.setQtd_remedio(carrinhoEnviado.getQtd_remedio());
+        carrinhoEncontrado.setQtd_remedio_carrinho(carrinhoEnviado.getQtd_remedio_carrinho());
         carrinhoRepository.save(carrinhoEncontrado);
         return carrinhoEncontrado;
     }

@@ -24,4 +24,5 @@ public class Remedio {
     private String descricao;
     private double valor;
     private boolean promocao=false;
+    private int qtd_estoque=1;
 }

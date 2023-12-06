@@ -52,7 +52,7 @@ public class CarrinhoController {
         model.addAttribute("listCarrinho", listCarrinho);
         double totalValor = 0;
         for (int i = 0; i < listCarrinho.size(); i++) {
-            totalValor = totalValor + (listCarrinho.get(i).getRemedio().getValor() * listCarrinho.get(i).getQtd_remedio());
+            totalValor = totalValor + (listCarrinho.get(i).getRemedio().getValor() * listCarrinho.get(i).getQtd_remedio_carrinho());
         }
         model.addAttribute("totalValor", totalValor);
         model.addAttribute("nomeRemedio", new Remedio());
@@ -79,12 +79,20 @@ public class CarrinhoController {
         return "telaFormaPagamento";
     }
 
-    @PostMapping("/pagamento")
+    @PostMapping("/pagamento/finalizar")
     public String finalizarCompra() {
         List<Carrinho> listCarrinho = carrinhoService.mostrarItensCarrinho();
         for (int i = 0; i < listCarrinho.size(); i++) {
             carrinhoService.excluirItemCarrinho(listCarrinho.get(i).getId());
+            if (listCarrinho.get(i).getRemedio().getQtd_estoque() == 0 || listCarrinho.get(i).getRemedio().getQtd_estoque() == listCarrinho.get(i).getQtd_remedio_carrinho()) {
+                remedioService.excluir(listCarrinho.get(i).getRemedio().getId());
+            } else {
+                if (listCarrinho.get(i).getRemedio().getQtd_estoque() > listCarrinho.get(i).getQtd_remedio_carrinho()) {
+                    listCarrinho.get(i).getRemedio().setQtd_estoque(listCarrinho.get(i).getRemedio().getQtd_estoque() - listCarrinho.get(i).getQtd_remedio_carrinho());
+                }
+            }
         }
+
         return "redirect:/drogaria";
     }
 }

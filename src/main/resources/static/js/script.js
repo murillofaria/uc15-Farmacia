@@ -8,6 +8,7 @@ const formCadastroRemedio = document.querySelector("#formCadastroRemedio");
 const nomeRemedio = document.querySelector("#nomeRemedio");
 const descricao = document.querySelector("#descricao");
 const valor = document.querySelector("#valor");
+const qtdEstoque = document.querySelector("#qtd_estoque");
 
 const pix = document.querySelector("#pix");
 const campoPix = document.querySelector("#campoPix");
@@ -20,16 +21,21 @@ const parcelaCredito = document.querySelector("#parcelaCredito");
 const botaoPagamento = document.querySelector("#botaoPagamento");
 const formEfetuarPagamento = document.querySelector("#formEfetuarPagamento");
 
-const remediosQuantidade = document.querySelectorAll(".qtd_remedio");
+const formQtdCarrinho = document.querySelector("#formQtdCarrinho");
+const remediosCarrinhoQuantidade = document.querySelectorAll(".qtd_remedio_carrinho");
 
-remediosQuantidade.forEach(function (remedioQtd) {
-    remedioQtd.addEventListener("input", () => {
-        if (remedioQtd.value < 1) {
-            remedioQtd.value = 1;
-            return;
-        }
+const formEditRemedio = document.querySelector("#formEditRemedio");
+
+if (formQtdCarrinho) {
+    remediosCarrinhoQuantidade.forEach(function (remedioQtd) {
+        remedioQtd.addEventListener("input", () => {
+            if (remedioQtd.value < 1) {
+                remedioQtd.value = 1;
+                return;
+            }
+        });
     });
-});
+}
 
 if (formCadastroUsuario) {
     formCadastroUsuario.addEventListener("submit", function () {
@@ -62,6 +68,15 @@ if (formCadastroUsuario) {
     });
 }
 
+if (formCadastroRemedio || formEditRemedio) {
+    qtdEstoque.addEventListener("input", () => {
+        if (qtdEstoque.value < 1) {
+            qtdEstoque.value = 1;
+            return;
+        }
+    });
+}
+
 if (formCadastroRemedio) {
     formCadastroRemedio.addEventListener("submit", function () {
         event.preventDefault();
@@ -70,63 +85,86 @@ if (formCadastroRemedio) {
             alert("Insira o campo nome do remédio corretamente.");
             return;
         }
-        ;
 
         if (descricao.value === "") {
             alert("Insira o campo descrição corretamente.");
             return;
         }
-        ;
 
         if (valor.value <= 0.0) {
             alert("Insira o campo valor corretamente.");
             return;
         }
-        ;
 
         formCadastroRemedio.submit();
         alert("Remédio cadastrado com sucesso!");
     });
 }
 
-pix.addEventListener("click", function () {
-    formEfetuarPagamento.style.display = "block";
-    campoCredito.style.display = "none";
-    campoPix.style.display = "block";
-    botaoPagamento.style.display = "block";
-});
+if (formEditRemedio) {
+    formEditRemedio.addEventListener("submit", function () {
+        event.preventDefault();
 
-cartaoCredito.addEventListener("click", function () {
-    formEfetuarPagamento.style.display = "block";
-    campoPix.style.display = "none";
-    campoCredito.style.display = "block";
-    botaoPagamento.style.display = "block";
-});
+        if (nomeRemedio.value === "") {
+            alert("Insira o campo nome do remédio corretamente.");
+            return;
+        }
 
-formEfetuarPagamento.addEventListener("submit", function () {
-    event.preventDefault();
+        if (descricao.value === "") {
+            alert("Insira o campo descrição corretamente.");
+            return;
+        }
 
-    if (telefonePix.value === "" && pix.checked) {
-        alert("Insira o campo telefone corretamente.");
-        return;
-    }
+        if (valor.value <= 0.0) {
+            alert("Insira o campo valor corretamente.");
+            return;
+        }
 
-    if (numeroCredito.value === "" && cartaoCredito.checked) {
-        alert("Insira o campo número corretamente.");
-        return;
-    }
+        formEditRemedio.submit();
+        alert("Remédio editado com sucesso!");
+    });
+}
 
-    if (codigoCredito.value === "" && cartaoCredito.checked) {
-        alert("Insira o campo Cód. Segurança corretamente.");
-        return;
-    }
+if (formEfetuarPagamento) {
+    pix.addEventListener("click", function () {
+        formEfetuarPagamento.style.display = "block";
+        campoCredito.style.display = "none";
+        campoPix.style.display = "block";
+        botaoPagamento.style.display = "block";
+    });
 
-    if (parcelaCredito.value === "Escolha o número de parcelas" && cartaoCredito.checked) {
-        alert("Escolha quantas vezes parcelar.");
-        return;
-    }
+    cartaoCredito.addEventListener("click", function () {
+        formEfetuarPagamento.style.display = "block";
+        campoPix.style.display = "none";
+        campoCredito.style.display = "block";
+        botaoPagamento.style.display = "block";
+    });
 
-    alert("Pagamento bem-sucedido :)");
+    formEfetuarPagamento.addEventListener("submit", function () {
+        event.preventDefault();
 
-    formEfetuarPagamento.submit();
-});
+        if (telefonePix.value === "" && pix.checked) {
+            alert("Insira o campo telefone corretamente.");
+            return;
+        }
+
+        if (numeroCredito.value === "" && cartaoCredito.checked) {
+            alert("Insira o campo número corretamente.");
+            return;
+        }
+
+        if (codigoCredito.value === "" && cartaoCredito.checked) {
+            alert("Insira o campo Cód. Segurança corretamente.");
+            return;
+        }
+
+        if (parcelaCredito.value === "Escolha o número de parcelas" && cartaoCredito.checked) {
+            alert("Escolha quantas vezes parcelar.");
+            return;
+        }
+
+        alert("Pagamento bem-sucedido :)");
+
+        formEfetuarPagamento.submit();
+    });
+}
