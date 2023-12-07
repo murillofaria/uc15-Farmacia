@@ -10,7 +10,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <header th:insert="~{navbar.html}"></header>
+                <header th:insert="~{componentesFixos.html}"></header>
             </div>
             <div th:if="${!remedios.isEmpty()}">
                 <div class="row mt-3 d-flex justify-content-center">
@@ -55,7 +55,7 @@
                     <h1 class="fs-1 fw-bold text-dark-emphasis">ESTOQUE VAZIO</h1>
                 </div>
                 <div class="row d-flex justify-content-center">
-                    <img th:src="@{/images/imagem_estoque_vazio.png}" class="w-25 mt-4">
+                    <img th:src="@{/images/imagem_estoque_vazio.png}" style="width: 250px" class="mt-5">
                 </div>
             </div>
         </div>

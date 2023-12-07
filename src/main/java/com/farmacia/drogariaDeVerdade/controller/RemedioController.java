@@ -1,6 +1,8 @@
 package com.farmacia.drogariaDeVerdade.controller;
 
+import com.farmacia.drogariaDeVerdade.model.Carrinho;
 import com.farmacia.drogariaDeVerdade.model.Remedio;
+import com.farmacia.drogariaDeVerdade.service.CarrinhoService;
 import com.farmacia.drogariaDeVerdade.service.RemedioService;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,9 @@ public class RemedioController {
 
     @Autowired
     RemedioService remedioService;
+
+    @Autowired
+    CarrinhoService carrinhoService;
 
     List<Remedio> remedios = new ArrayList<>();
 
@@ -42,7 +47,7 @@ public class RemedioController {
         if (remedioEncontrado != null) {
             model.addAttribute("remedios", remedioEncontrado);
         } else {
-            model.addAttribute("remedios", listRemedio);
+            model.addAttribute("remedios", null);
         }
         return "telaInicial";
     }
@@ -75,6 +80,12 @@ public class RemedioController {
 
     @GetMapping("/remedio/deletar/{idRemedio}")
     public String deletarRemedio(@PathVariable("idRemedio") Integer idRemedio) {
+        List<Carrinho> listCarrinho = carrinhoService.mostrarItensCarrinho();
+        for (int i = 0; i < listCarrinho.size(); i++) {
+            if(listCarrinho.get(i).getRemedio().getId().equals(idRemedio)){
+                carrinhoService.excluirItemCarrinho(listCarrinho.get(i).getId());
+            }
+        }
         remedioService.excluir(idRemedio);
         return "redirect:/drogaria/remedio/estoque";
     }

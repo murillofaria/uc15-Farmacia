@@ -26,6 +26,9 @@ const remediosCarrinhoQuantidade = document.querySelectorAll(".qtd_remedio_carri
 
 const formEditRemedio = document.querySelector("#formEditRemedio");
 
+const formPerguntaCliente = document.getElementById("formPerguntaCliente");
+const selecionarPergunta = document.getElementById("selecionarPergunta");
+
 if (formQtdCarrinho) {
     remediosCarrinhoQuantidade.forEach(function (remedioQtd) {
         remedioQtd.addEventListener("input", () => {
@@ -167,4 +170,11 @@ if (formEfetuarPagamento) {
 
         formEfetuarPagamento.submit();
     });
+}
+
+if (formPerguntaCliente) {
+    selecionarPergunta.addEventListener("change", function () {
+        formPerguntaCliente.submit();
+    });
+
 }

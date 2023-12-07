@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Tela Atendimento</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <header th:insert="~{componentesFixos.html}"></header>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="row d-flex justify-content-center mt-4 mb-3">
+                    <div class="col-4">
+                        <span class="fs-2 fw-bold">ATENDIMENTO AO CLIENTE</span>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="row bg-success bg-gradient bg-opacity-25 rounded h-100 py-4 border border-info-subtle shadow-sm">
+                        <div th:if="${perguntaSelecionada}">
+                            <div th:if="${perguntaSelecionada == 1}">
+                                <div class="row align-items-center">
+                                    <div class="col-1">
+                                        <img th:src="@{/images/imagem_robo.png}" class="bg bg-primary rounded" style="width: 55px">
+                                    </div>
+                                    <div class="bg-success rounded col-4 ms-3" th:if="${!remediosPromocao.isEmpty()}">
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="text-white p-2 text-decoration-underline">Remédio(s) em promoção:</span>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2" th:each="remedio : ${remediosPromocao}">
+                                            <div class="col">
+                                                <span th:text="${remedio.nome}+', R$'+${remedio.valor}" class="text-white p-2"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" th:unless="${!remediosPromocao.isEmpty()}">
+                                    <div class="row align-items-center">
+                                        <div class="col-1">
+                                            <img th:src="@{/images/imagem_robo.png}" class="bg bg-primary rounded" style="width: 55px">
+                                        </div>
+                                        <div class="col">
+                                            <span class="bg-success text-white rounded-pill p-2">Nenhum remédio em promoção</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5 align-items-center">
+                                        <div class="col-1">
+                                            <img th:src="@{/images/imagem_robo.png}" class="bg bg-primary rounded" style="width: 55px">
+                                        </div>
+                                        <div class="col">
+                                            <span class="bg-success text-white rounded-pill p-2">😕</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5 align-items-center">
+                                        <div class="col-1">
+                                            <img th:src="@{/images/imagem_robo.png}" class="bg bg-primary rounded" style="width: 55px">
+                                        </div>
+                                        <div class="col">
+                                            <span class="bg-success text-white rounded-pill p-2">tá fácil pra ninguém...</span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5 align-items-center">
+                                        <div class="col-1">
+                                            <img th:src="@{/images/imagem_robo.png}" class="bg bg-primary rounded" style="width: 55px">
+                                        </div>
+                                        <div class="col">
+                                            <span class="bg-success text-white rounded-pill p-2">mais alguma pergunta?</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div th:if="${perguntaSelecionada == 2}">
+                                <div class="row align-items-center">
+                                    <div class="col-1">
+                                            <img th:src="@{/images/imagem_robo.png}" class="bg bg-primary rounded" style="width: 55px">
+                                    </div>
+                                    <div class="bg-success rounded col-5 ms-3">
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="text-white p-2 text-decoration-underline">Temos duas formas de pagamento:</span>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <span class="text-white p-2">PIX📱</span>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <span class="text-white p-2">Cartão de Crédito💳</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div th:if="${perguntaSelecionada == 3}">
+                                <div class="row align-items-center">
+                                    <div class="col-1">
+                                        <img th:src="@{/images/imagem_robo.png}" class="bg bg-primary rounded" style="width: 55px">
+                                    </div>
+                                    <div class="col">
+                                        <span class="bg-success text-white rounded-pill p-2">Na sexta-feira 13 tome cuidado e use XML😨</span>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center mt-5">
+                                    <div class="col-1">
+                                        <img th:src="@{/images/imagem_robo.png}" class="bg bg-primary rounded" style="width: 55px">
+                                    </div>
+                                    <div class="bg-success rounded col-6 d-flex ms-3">
+                                        <div class="row">
+                                            <div class="col">
+                                                <img th:src="@{/images/imagem_jason.png}" class="p-2" style="width: 220px">
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <img th:src="@{/images/imagem_arquivo_json.png}" class="p-2" style="width: 200px">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-5 align-items-center">
+                                    <div class="col-1">
+                                        <img th:src="@{/images/imagem_robo.png}" class="bg bg-primary rounded" style="width: 55px">
+                                    </div>
+                                    <div class="col">
+                                        <span class="bg-success text-white rounded-pill p-2">não invente de usar JaSON...</span>
+                                    </div>
+                                </div>
+                                <div class="row mt-5 align-items-center">
+                                    <div class="col-1">
+                                        <img th:src="@{/images/imagem_robo.png}" class="bg bg-primary rounded" style="width: 55px">
+                                    </div>
+                                    <div class="col">
+                                        <span class="bg-success text-white rounded-pill p-2">mais alguma pergunta?🤡</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div th:unless="${perguntaSelecionada}">
+                            <div class="row align-items-center">
+                                <div class="col-1">
+                                    <img th:src="@{/images/imagem_robo.png}" class="bg bg-primary rounded" style="width: 55px">
+                                </div>
+                                <div class="col">
+                                <span class="bg-success text-white rounded-pill p-2">Olá, mundo!</span>
+                                </div>
+                            </div>
+                            <div class="row mt-4 align-items-center" th:if="${ultimoUsuario.nome}">
+                                <div class="col-1">
+                                    <img th:src="@{/images/imagem_robo.png}" class="bg bg-primary rounded" style="width: 55px">
+                                </div>
+                                <div class="col">
+                                <span class="bg-success text-white rounded-pill p-2">quer dizer... Olá, <span th:text="${ultimoUsuario.nome}"></span>! O que deseja?</span>
+                                </div>
+                            </div>
+                            <div class="row mt-4 align-items-center" th:unless="${ultimoUsuario.nome}">
+                                <div class="col-1">
+                                    <img th:src="@{/images/imagem_robo.png}" class="bg bg-primary rounded" style="width: 55px">
+                                </div>
+                                <div class="col">
+                                    <span class="bg-success text-white rounded-pill p-2">quer dizer... Olá! O que deseja?</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col d-flex justify-content-end">
+                                <form th:action="@{/drogaria/atendimento}" method="POST" th:object="${pergunta}" id="formPerguntaCliente">
+                                    <select class="form-select p-2 px-4" id="selecionarPergunta" th:field="*{selecionarPergunta}">
+                                        <option selected value="0" th:if="${perguntaSelecionada}">SELECIONE MAIS PERGUNTAS</option>
+                                        <option selected value="0" th:unless="${perguntaSelecionada}">SELECIONE UMA PERGUNTA</option>
+                                        <option value="1">Quais remédios estão em promoção?</option>
+                                        <option value="2">Quais são as formas de pagamento?</option>
+                                        <option value="3">Conte uma piada</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script th:src="@{/js/script.js}" defer></script>
+    </body>
+</html>

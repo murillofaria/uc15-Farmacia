@@ -10,48 +10,57 @@
     <body>
         <div class="container">
             <div class="row">
-                <header th:insert="~{navbar.html}"></header>
+                <header th:insert="~{componentesFixos.html}"></header>
             </div>
-
-            <h4 class="text-start fw-semibold mt-5">Destaques da semana</h4>
-            <div class="row">
-                <div class="col-4" th:each="remedio : ${remedios}" th:if="${remedio.promocao == false}">
-                    <div class="card">
-                        <div class="row g-0">
-                            <div class="col-4">
-                                <img class="img-fluid rounded-start" th:src="@{/images/imagem_remedio_amarelo.jpg}">
+            <div th:if="${remedios != null}">
+                <h4 class="text-start fw-semibold mt-5">Destaques da semana</h4>
+                <div class="row">
+                    <div class="col-4" th:each="remedio : ${remedios}" th:if="${remedio.promocao == false}">
+                        <div class="card">
+                            <div class="row g-0">
+                                <div class="col-4">
+                                    <img class="img-fluid rounded-start" th:src="@{/images/imagem_remedio_amarelo.jpg}">
+                                </div>
+                                <div class="col-8 bg-body-tertiary">
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="${remedio.nome}"></h5>
+                                        <p class="card-text" th:text="${remedio.descricao}" ></p>
+                                        <h6 class="card-text" th:text="'R$: '+${remedio.valor}"></h6>
+                                        <a th:href="@{'/drogaria/carrinho/'+${remedio.id}}" class="btn btn-success">COMPRAR</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-8 bg-body-tertiary">
-                                <div class="card-body">
-                                    <h5 class="card-title" th:text="${remedio.nome}"></h5>
-                                    <p class="card-text" th:text="${remedio.descricao}" ></p>
-                                    <h6 class="card-text" th:text="'R$: '+${remedio.valor}"></h6>
-                                    <a th:href="@{'/drogaria/carrinho/'+${remedio.id}}" class="btn btn-success">COMPRAR</a>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="text-start fw-semibold mt-5">Promoções</h4>
+                <div class="row">
+                    <div class="col-4" th:each="remedio : ${remedios}" th:unless="${remedio.promocao == false}">
+                        <div class="card mb-4">
+                            <div class="row g-0">
+                                <div class="col-4">
+                                    <img class="img-fluid rounded-start" th:src="@{/images/imagem_remedio_vermelho.jpg}">
+                                </div>
+                                <div class="col-8 bg-body-tertiary">
+                                    <div class="card-body">
+                                        <h5 th:text="${remedio.nome}" class="card-title"></h5>
+                                        <p th:text="${remedio.descricao}" class="card-text"></p>
+                                        <h6 th:text="'R$: '+${remedio.valor}" class="card-text"></h6>
+                                        <a th:href="@{'/drogaria/carrinho/'+${remedio.id}}" class="btn btn-success">COMPRAR</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <h4 class="text-start fw-semibold mt-5">Promoções</h4>
-            <div class="row">
-                <div class="col-4" th:each="remedio : ${remedios}" th:unless="${remedio.promocao == false}">
-                    <div class="card">
-                        <div class="row g-0">
-                            <div class="col-4">
-                                <img class="img-fluid rounded-start" th:src="@{/images/imagem_remedio_vermelho.jpg}">
-                            </div>
-                            <div class="col-8 bg-body-tertiary">
-                                <div class="card-body">
-                                    <h5 th:text="${remedio.nome}" class="card-title"></h5>
-                                    <p th:text="${remedio.descricao}" class="card-text"></p>
-                                    <h6 th:text="'R$: '+${remedio.valor}" class="card-text"></h6>
-                                    <a th:href="@{'/drogaria/carrinho/'+${remedio.id}}" class="btn btn-success">COMPRAR</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div th:unless="${remedios != null}" class="row d-flex justify-content-center">
+                <div class="row text-center mt-5">
+                    <h1 class="fs-1 fw-bold text-dark-emphasis">REMÉDIO NÃO ENCONTRADO</h1>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <img th:src="@{/images/imagem_pesquisa_sem_resultado.png}" style="width: 240px" class="mt-5">
                 </div>
             </div>
         </div>
